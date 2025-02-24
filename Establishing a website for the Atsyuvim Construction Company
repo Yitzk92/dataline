@@ -1,0 +1,46 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+export default function Home() {
+  const [projects, setProjects] = useState([
+    { id: 1, title: "פרויקט מגדלים", image: "/tower.jpg" },
+    { id: 2, title: "בניין משרדים מודרני", image: "/office.jpg" },
+    { id: 3, title: "עיצוב מבנה מגורים", image: "/residential.jpg" }
+  ]);
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-8">
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl font-bold text-center text-gray-800"
+      >
+        Cocridiel - עיצוב לחברות בנייה
+      </motion.h1>
+
+      <p className="text-center text-gray-600 mt-4 max-w-2xl mx-auto">
+        אנו מתמחים בעיצוב חדשני לחברות בנייה, עם דגש על יצירתיות ופתרונות חכמים.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-10">
+        {projects.map((project) => (
+          <Card key={project.id} className="bg-white shadow-lg rounded-lg">
+            <CardContent>
+              <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-t-lg" />
+              <h2 className="text-lg font-semibold text-center mt-4">{project.title}</h2>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <div className="flex justify-center mt-10">
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+          צרו קשר
+        </Button>
+      </div>
+    </div>
+  );
+}
