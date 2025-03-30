@@ -1,0 +1,50 @@
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Select, SelectItem } from "@/components/ui/select";
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import("@/components/Map"), { ssr: false });
+
+export default function RealEstateSite() {
+  const [project, setProject] = useState("");
+  const [contactName, setContactName] = useState("איציק");
+  const [contactPhone, setContactPhone] = useState("05478456357");
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6">הפרויקטים שלנו</h1>
+      <p>ברוכים הבאים לחברת "נדל"ן בבנייה" בנתני לחברת "נדל"ן בבנייה" בנתניה. אנו מתמחים בפרויקטים איכותיים של דירות ובנייה.</p>
+
+      <h2 className="mt-8 text-xl font-semibold">צור קשר</h2>
+      <div className="mb-4">
+        <label className="block mb-2">שם</label>
+        <Input value={contactName} readOnly />
+      </div>
+      <div className="mb-4">
+        <label className="block mb-2">טלפון</label>
+        <Input value={contactPhone} readOnly />
+      </div>
+      <Button className="bg-blue-500 text-white">שלח פנייה</Button>
+
+      <h2 className="mt-8 text-xl font-semibold">הפרויקטים שלנו</h2>
+      <div className="grid grid-cols-2 gap-4">
+        <Card>
+          <CardContent>
+            <h3 className="text-lg font-semibold">פרויקט 1 - נתניה</h3>
+            <p>תיאור קצר על הפרויקט, תכניות וסטטוס.</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent>
+            <h3 className="text-lg font-semibold">פרויקט 2 - נתניה</h3>
+            <p>תיאור קצר על הפרויקט, תכניות וסטטוס.</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <h2 className="mt-8 text-xl font-semibold">מפת נכסים בישראל</h2>
+      <Map location="ישראל" />
+      <p className="mt-2">לגשת למפת נכסים מלאה בכל הארץ:</p>
+      <a href="https://www.example.com/map" target="_blank" className="text-blue-500">מ_
